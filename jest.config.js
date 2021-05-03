@@ -5,10 +5,14 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.ts(x)?',
     '!src/**/stories.tsx',
-    '!src/styles/*.ts',
-    '!src/pages/*.tsx',
-    '!src/types/*.ts'
+    '!src/styles/**/*.ts',
+    '!src/pages/**/*.tsx',
+    '!src/types/**/*.d.ts'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
-  modulePaths: ['<rootDir>/src/']
+  modulePaths: ['<rootDir>/src/'],
+  moduleNameMapper: {
+    '^styled-components':
+      '<rootDir>/node_modules/styled-components/dist/styled-components.browser.cjs.js'
+  }
 }
