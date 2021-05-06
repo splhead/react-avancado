@@ -7,6 +7,9 @@ export default {
   argTypes: {
     children: {
       type: 'string'
+    },
+    lineColor: {
+      options: ['primary', 'secondary']
     }
   }
 } as Meta
@@ -14,5 +17,9 @@ export default {
 export const Default: Story<HeadingProps> = (args) => <Heading {...args} />
 
 Default.args = {
-  children: 'Most Popular'
+  children: 'Most Popular',
+  color: 'black',
+  lineBottom: true,
+  lineColor: 'primary',
+  size: 'medium'
 }
