@@ -7,7 +7,7 @@ import Button from 'components/Button'
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 import * as S from './styles'
 
-export type GameCardeProps = {
+export type GameCardProps = {
   title: string
   developer: string
   img: string
@@ -31,7 +31,7 @@ const GameCard = ({
   ribbon,
   ribbonSize = 'small',
   ribbonColor = 'primary'
-}: GameCardeProps) => (
+}: GameCardProps) => (
   <S.Wrapper>
     {!!ribbon && (
       <Ribbon size={ribbonSize} color={ribbonColor}>
