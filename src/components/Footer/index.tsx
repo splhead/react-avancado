@@ -10,7 +10,7 @@ const Footer = () => (
     <S.Content>
       <S.Column>
         <Heading color="black" size="small" lineBottom lineColor="secondary">
-          Contact
+          Contact us
         </Heading>
 
         <a href="mailto:splhead@gmail.com">sac@wongames.com</a>

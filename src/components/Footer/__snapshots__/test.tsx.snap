@@ -24,7 +24,7 @@ exports[`<Footer /> should render 4 columns topics 1`] = `
 .c1 {
   color: #030517;
   width: 11rem;
-  height: 3.3.rem;
+  height: 3.3rem;
 }
 
 .c0 .c4 {
@@ -166,7 +166,7 @@ exports[`<Footer /> should render 4 columns topics 1`] = `
         class="c4 c5"
         color="black"
       >
-        Contact
+        Contact us
       </h2>
       <a
         href="mailto:splhead@gmail.com"
