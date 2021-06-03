@@ -11,6 +11,8 @@ import BannerSlider from 'components/BannerSlider'
 import GameCardSlider from 'components/GameCardSlider'
 import Highlight from 'components/Highlight'
 
+import * as S from './styles'
+
 export type HomeTemplateProps = {
   banners: BannerProps[]
   newGames: GameCardProps[]
@@ -37,35 +39,43 @@ const Home = ({
   <section>
     <Container>
       <Menu />
-      <BannerSlider items={banners} />
+      <S.SectionBanner>
+        <BannerSlider items={banners} />
+      </S.SectionBanner>
     </Container>
+
+    <S.SectionNews>
+      <Container>
+        <Heading lineLeft lineColor="secondary" color="black">
+          News
+        </Heading>
+
+        <GameCardSlider items={newGames} color="white" />
+      </Container>
+    </S.SectionNews>
 
     <Container>
-      <Heading lineLeft lineColor="secondary" color="black">
-        News
-      </Heading>
+      <S.SectionMostPopular>
+        <Heading lineLeft lineColor="secondary">
+          Most Popular
+        </Heading>
 
-      <GameCardSlider items={newGames} color="white" />
+        <Highlight {...mostPopularHighlight} />
+        <GameCardSlider items={mostPopularGames} />
+      </S.SectionMostPopular>
     </Container>
 
-    <Container>
-      <Heading lineLeft lineColor="secondary">
-        Most Popular
-      </Heading>
+    <S.SectionUpcoming>
+      <Container>
+        <Heading lineLeft lineColor="secondary">
+          Upcoming
+        </Heading>
 
-      <Highlight {...mostPopularHighlight} />
-      <GameCardSlider items={mostPopularGames} />
-    </Container>
-
-    <Container>
-      <Heading lineLeft lineColor="secondary">
-        Upcoming
-      </Heading>
-
-      <GameCardSlider items={upcomingGames} />
-      <Highlight {...upcomingHighlight} />
-      <GameCardSlider items={upcomingMoreGames} />
-    </Container>
+        <GameCardSlider items={upcomingGames} />
+        <Highlight {...upcomingHighlight} />
+        <GameCardSlider items={upcomingMoreGames} />
+      </Container>
+    </S.SectionUpcoming>
 
     <Container>
       <Heading lineLeft lineColor="secondary">
