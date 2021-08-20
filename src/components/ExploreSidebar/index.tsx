@@ -30,7 +30,7 @@ export type ExploreSidebarProps = {
 }
 
 const ExploreSidebar = ({
-  items,
+  items = [],
   onFilter,
   initialValues = {}
 }: ExploreSidebarProps) => {
