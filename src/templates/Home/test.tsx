@@ -11,13 +11,16 @@ import Home from '.'
 const props = {
   banners: bannersMock,
   newGames: [gamesMock[0]],
+  newGamesTitle: 'New Games',
   mostPopularHighlight: highlightMock,
   mostPopularGames: [gamesMock[0]],
+  mostPopularGamesTitle: 'Popular Games',
   upcomingGames: [gamesMock[0]],
   upcomingHighlight: highlightMock,
-  upcomingMoreGames: [gamesMock[0]],
+  upcomingGamesTitle: 'Upcoming Games',
   freeGames: [gamesMock[0]],
-  freeHighlight: highlightMock
+  freeHighlight: highlightMock,
+  freeGamesTitle: 'Free Games'
 }
 
 jest.mock('components/Showcase', () => {
@@ -43,6 +46,6 @@ describe('<Home />', () => {
     renderWithTheme(<Home {...props} />)
 
     expect(screen.getByTestId('Mock Banner Slider')).toBeInTheDocument()
-    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(4)
   })
 })

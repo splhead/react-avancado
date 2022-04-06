@@ -21,7 +21,7 @@ export async function getStaticProps() {
   return {
     props: {
       revalidate: 60,
-      games: gamesMapper(data)
+      games: gamesMapper(data.games)
     }
   }
 }

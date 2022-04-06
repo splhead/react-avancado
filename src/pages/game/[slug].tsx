@@ -11,7 +11,6 @@ import {
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
 import { GetStaticProps } from 'next'
-import { gameMapper } from 'utils/mappers'
 
 const apolloClient = initializeApollo()
 
@@ -49,10 +48,30 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return { notFound: true }
   }
 
+  const game = data.games[0]
+
   return {
     props: {
       revalidate: 60,
-      ...gameMapper(data),
+      cover: `http://localhost:1337${game.cover?.src}`,
+      gameInfo: {
+        title: game.name,
+        price: game.price,
+        description: game.short_description
+      },
+      gallery: game.gallery.map((image) => ({
+        src: `http://localhost:1337${image.src}`,
+        label: image.label
+      })),
+      description: game.description,
+      details: {
+        developer: game.developers[0].name,
+        releaseDate: game.release_date,
+        platforms: game.platforms.map((platform) => platform.name),
+        publisher: game.publisher?.name,
+        rating: game.rating,
+        genres: game.categories.map((category) => category.name)
+      },
       upcomingGames: gamesMock,
       upcomingHighlight: highlightMock,
       recommendedGames: gamesMock
