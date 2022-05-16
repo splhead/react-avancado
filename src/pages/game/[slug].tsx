@@ -1,7 +1,5 @@
 import Game, { GameTemplateProps } from 'templates/Game'
 
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
 import { useRouter } from 'next/router'
 import { initializeApollo } from 'utils/apollo'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
@@ -11,6 +9,14 @@ import {
   QueryGameBySlugVariables
 } from 'graphql/generated/QueryGameBySlug'
 import { GetStaticProps } from 'next'
+import { QueryRecommended } from 'graphql/generated/QueryRecommended'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
+import {
+  QueryUpcoming,
+  QueryUpcomingVariables
+} from 'graphql/generated/QueryUpcoming'
+import { QUERY_UPCOMING } from 'graphql/queries/upcoming'
 
 const apolloClient = initializeApollo()
 
@@ -50,6 +56,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const game = data.games[0]
 
+  const { data: recommendedData } = await apolloClient.query<QueryRecommended>({
+    query: QUERY_RECOMMENDED
+  })
+
+  const TODAY = new Date().toISOString().slice(0, 10)
+  const { data: upcomingData } = await apolloClient.query<
+    QueryUpcoming,
+    QueryUpcomingVariables
+  >({
+    query: QUERY_UPCOMING,
+    variables: {
+      date: TODAY
+    }
+  })
+
   return {
     props: {
       revalidate: 60,
@@ -72,9 +93,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rating: game.rating,
         genres: game.categories.map((category) => category.name)
       },
-      upcomingGames: gamesMock,
-      upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock
+      upcomingTitle: upcomingData.showcase?.upcomingGames?.title,
+      upcomingGames: gamesMapper(upcomingData.upcomingGames),
+      upcomingHighlight: highlightMapper(
+        upcomingData.showcase?.upcomingGames?.highlight
+      ),
+      recommendedTitle: recommendedData.recommended?.section?.title,
+      recommendedGames: gamesMapper(recommendedData.recommended?.section?.games)
     }
   }
 }

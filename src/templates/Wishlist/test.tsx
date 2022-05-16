@@ -9,7 +9,8 @@ import { renderWithTheme } from 'utils/tests/helpers'
 const props: WishlistProps = {
   games: gamesMock,
   recommendedGames: gamesMock,
-  recommendedHighlight: highlightMock
+  recommendedHighlight: highlightMock,
+  recommendedTitle: 'You may like these games'
 }
 
 jest.mock('components/Showcase', () => {
