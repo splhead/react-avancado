@@ -39,6 +39,7 @@ describe('<Wishlist />', () => {
       <Wishlist
         recommendedGames={props.recommendedGames}
         recommendedHighlight={props.recommendedHighlight}
+        recommendedTitle={props.recommendedTitle}
       />
     )
 

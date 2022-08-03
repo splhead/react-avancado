@@ -32,7 +32,7 @@ describe('<GameDetails />', () => {
       screen.getByRole('heading', { name: /publisher/i })
     ).toBeInTheDocument()
 
-    expect(screen.getByRole('heading', { name: /rating/i })).toBeInTheDocument()
+    // expect(screen.getByRole('heading', { name: /rating/i })).toBeInTheDocument()
 
     expect(screen.getByRole('heading', { name: /genres/i })).toBeInTheDocument()
   })
@@ -45,11 +45,11 @@ describe('<GameDetails />', () => {
     expect(screen.getByRole('img', { name: /mac/i })).toBeInTheDocument()
   })
 
-  it('should render free rating when BR0', () => {
-    renderWithTheme(<GameDetails {...props} />)
+  // it('should render free rating when BR0', () => {
+  //   renderWithTheme(<GameDetails {...props} />)
 
-    expect(screen.getByText(/free/i)).toBeInTheDocument()
-  })
+  //   expect(screen.getByText(/free/i)).toBeInTheDocument()
+  // })
 
   it('should the developer', () => {
     renderWithTheme(<GameDetails {...props} />)
@@ -63,11 +63,11 @@ describe('<GameDetails />', () => {
     expect(screen.getByText(/WalkThrough/i)).toBeInTheDocument()
   })
 
-  it('should render 18+ rating when BR18', () => {
-    renderWithTheme(<GameDetails {...props} rating="BR18" />)
+  // it('should render 18+ rating when BR18', () => {
+  //   renderWithTheme(<GameDetails {...props} rating="BR18" />)
 
-    expect(screen.getByText(/18\+/i)).toBeInTheDocument()
-  })
+  //   expect(screen.getByText(/18\+/i)).toBeInTheDocument()
+  // })
 
   it('should render the formatted date', () => {
     renderWithTheme(<GameDetails {...props} />)
