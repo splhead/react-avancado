@@ -23,7 +23,6 @@ const GameDetails = ({
   releaseDate,
   platforms,
   publisher,
-  rating,
   genres
 }: GameDetailsProps) => {
   const platformIcons = {
@@ -71,12 +70,12 @@ const GameDetails = ({
           <S.Description>{publisher}</S.Description>
         </S.Block>
 
-        <S.Block>
+        {/* <S.Block>
           <S.Label>Rating</S.Label>
           <S.Description>
             {rating === 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
           </S.Description>
-        </S.Block>
+        </S.Block> */}
 
         <S.Block>
           <S.Label>Genres</S.Label>
